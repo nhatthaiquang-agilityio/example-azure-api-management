@@ -32,4 +32,3 @@ stages:
           StorageAccountsName: 'testtfstorageforazfunc'
           AzureContainerName: 'testtfconstainerforazfunc'
           AzureRmKeyTFState: 'test.azure-api-management.tfstate'
-          Location: 'SouthEast Asia'
