@@ -29,7 +29,7 @@ resource "azurerm_api_management" "az_api_mng_svc" {
   resource_group_name = data.azurerm_resource_group.rg.name
   publisher_name      = "Example Publisher"
   publisher_email     = "nhat.thaiquang@asnet.com.vn"
-  sku_name            = "Developer_1"
+  sku_name            = "Basic_1"
   tags = {
     Environment = var.environment
   }
