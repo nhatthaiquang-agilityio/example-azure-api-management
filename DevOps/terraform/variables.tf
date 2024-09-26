@@ -6,6 +6,10 @@ variable "resource_group_name" {
   type = string
 }
 
+variable "az_func_name" {
+  type = string
+}
+
 variable "location" {
   description = "The Azure Region in which all resources in this example should be created."
   type = string

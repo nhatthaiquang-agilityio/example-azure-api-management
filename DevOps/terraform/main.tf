@@ -61,6 +61,34 @@ resource "azurerm_api_management_api" "api" {
   }
 }
 
+
+resource "azurerm_api_management_api_operation_policy" "apiWelcomeTriggerPolicy" {
+  api_name            = azurerm_api_management_api.api.name
+  api_management_name = azurerm_api_management.az_api_mng_svc.name
+  resource_group_name = data.azurerm_resource_group.rg.name
+  operation_id        = "WelcomeTrigger"
+
+  xml_content = <<XML
+ <policies>
+    <inbound>
+        <base />
+        <set-backend-service base-url="https://${var.az_func_name}.azurewebsites.net" />
+        <rewrite-uri template="/api/MngWelcomeTrigger" />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
+
+XML
+}
+
 resource "azurerm_api_management_product" "product" {
   product_id            = "${var.environment}-product"
   resource_group_name   = data.azurerm_resource_group.rg.name
