@@ -24,7 +24,7 @@ data "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_api_management" "az_api_mng_svc" {
-  name                = "${var.environment}-az-api-svc-mng"
+  name                = "${var.environment}-az-api-svc-mng-ops"
   location            = var.location
   resource_group_name = data.azurerm_resource_group.rg.name
   publisher_name      = "Example Publisher"
