@@ -2,11 +2,6 @@ variable "environment" {
   type = string
 }
 
-variable "prefix" {
-  type = string
-  value = "test"
-}
-
 variable "resource_group_name" {
   type = string
 }

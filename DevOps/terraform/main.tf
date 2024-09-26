@@ -4,7 +4,7 @@ data "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_api_management" "apim_service" {
-  name                = "${var.prefix}-apim-service"
+  name                = "${var.environment}-apim-service"
   location            = var.location
   resource_group_name = azurerm_resource_group.rg.name
   publisher_name      = "Example Publisher"
@@ -26,11 +26,11 @@ XML
 }
 
 resource "azurerm_api_management_api" "api" {
-  name                = "${var.prefix}-api"
+  name                = "${var.environment}-api"
   resource_group_name = azurerm_resource_group.rg.name
   api_management_name = azurerm_api_management.apim_service.name
   revision            = "1"
-  display_name        = "${var.prefix}-api"
+  display_name        = "${var.environment}-api"
   path                = "example"
   protocols           = ["https", "http"]
   description         = "An example API"
@@ -42,10 +42,10 @@ resource "azurerm_api_management_api" "api" {
 }
 
 resource "azurerm_api_management_product" "product" {
-  product_id            = "${var.prefix}-product"
+  product_id            = "${var.environment}-product"
   resource_group_name   = azurerm_resource_group.rg.name
   api_management_name   = azurerm_api_management.apim_service.name
-  display_name          = "${var.prefix}-product"
+  display_name          = "${var.environment}-product"
   subscription_required = true
   approval_required     = false
   published             = true
@@ -53,10 +53,10 @@ resource "azurerm_api_management_product" "product" {
 }
 
 resource "azurerm_api_management_group" "group" {
-  name                = "${var.prefix}-group"
+  name                = "${var.environment}-group"
   resource_group_name = azurerm_resource_group.rg.name
   api_management_name = azurerm_api_management.apim_service.name
-  display_name        = "${var.prefix}-group"
+  display_name        = "${var.environment}-group"
   description         = "An example group"
 }
 
