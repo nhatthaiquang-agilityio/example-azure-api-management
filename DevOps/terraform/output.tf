@@ -1,17 +1,17 @@
 
 output "service_id" {
   description = "The ID of the API Management Service created"
-  value       = azurerm_api_management.apim_service.id
+  value       = azurerm_api_management.az_api_mng_svc.id
 }
 
 output "gateway_url" {
   description = "The URL of the Gateway for the API Management Service"
-  value       = azurerm_api_management.apim_service.gateway_url
+  value       = azurerm_api_management.az_api_mng_svc.gateway_url
 }
 
 output "service_public_ip_addresses" {
   description = "The Public IP addresses of the API Management Service"
-  value       = azurerm_api_management.apim_service.public_ip_addresses
+  value       = azurerm_api_management.az_api_mng_svc.public_ip_addresses
 }
 
 output "api_outputs" {
