@@ -58,6 +58,11 @@ resource "azurerm_api_management_api" "api" {
   protocols           = ["https", "http"]
   description         = "An example API"
 
+  subscription_key_parameter_names  {
+    header = "Ocp-Apim-Subscription-Key"
+    query = "access-key"
+  }
+
   import {
     content_format = var.open_api_spec_content_format
     content_value  = var.open_api_spec_content_value
