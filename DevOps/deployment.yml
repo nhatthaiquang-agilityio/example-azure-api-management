@@ -34,5 +34,5 @@ stages:
           StorageAccountsName: 'testtfstorageforazfunc'
           AzureContainerName: 'testtfconstainerforazfunc'
           AzureRmKeyTFState: 'test.azure-api-management.tfstate'
-          AzureSubscriptionId: ${{ variables.AzureSubscriptionId }}'
-          AzureClientSecret: ${{ variables.AzureClientSecret }}'
+          AzureSubscriptionId: '$(AzureSubscriptionId)'
+          AzureClientSecret: '$(AzureClientSecret)'
