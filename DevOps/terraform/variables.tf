@@ -2,6 +2,14 @@ variable "environment" {
   type = string
 }
 
+variable client_id {
+  type = string
+}
+
+variable subscription_id {
+  type = string
+}
+
 variable "resource_group_name" {
   type = string
 }
