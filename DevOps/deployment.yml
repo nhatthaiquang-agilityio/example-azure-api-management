@@ -22,6 +22,8 @@ variables:
 stages:
   - stage: SetupInfrastructure
     displayName: Test - Setup Infrastructure
+    variables:
+      - group: Test.AzureInfrastructure
     jobs:
       - template: jobs/setup-api-management.yml@CICD
         parameters:
