@@ -15,7 +15,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-  resource_provider_registrations = "none"
+  skip_provider_registration = true
 }
 
 data "azurerm_resource_group" "rg" {
