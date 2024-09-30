@@ -2,7 +2,7 @@ variable "environment" {
   type = string
 }
 
-variable client_id {
+variable client_secret {
   type = string
 }
 
