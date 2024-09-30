@@ -1,6 +1,6 @@
 environment = "test"
 resource_group_name = "RG-ExamAzureFunctions"
-location = "SouthEast Asia"
+location = "Korea Central"
 open_api_spec_content_format = "openapi+json"
 open_api_spec_content_value = "https://exampleazfuncservicebus.azurewebsites.net/api/swagger.json"
 az_func_name = "exampleazfuncservicebus"
