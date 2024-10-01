@@ -22,8 +22,6 @@ variables:
 stages:
   - stage: SetupInfrastructure
     displayName: Test - Setup Infrastructure
-    variables:
-      - group: Test.AzureInfrastructure
     jobs:
       - template: jobs/setup-api-management.yml@CICD
         parameters:
@@ -34,5 +32,3 @@ stages:
           StorageAccountsName: 'testtfstorageforazfunc'
           AzureContainerName: 'testtfconstainerforazfunc'
           AzureRmKeyTFState: 'test.azure-api-management.tfstate'
-          AzureSubscriptionId: '$(AzureSubscriptionId)'
-          AzureClientSecret: '$(AzureClientSecret)'
