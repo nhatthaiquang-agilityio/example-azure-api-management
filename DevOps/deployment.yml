@@ -20,10 +20,19 @@ variables:
     value: 'AzServicePrincipal'
 
 stages:
+  - stage: build
+    displayName: Build
+    jobs:
+      - template: jobs/build-dotnet.yml@CICD
+        parameters:
+          BuildTargetPath: '**/ExampleAzureFunctions.csproj'
+          DotNetVersion: '8.x'
+
   - stage: SetupInfrastructure
     displayName: Test - Setup Infrastructure
+    dependsOn: build
     jobs:
-      - template: jobs/setup-api-management.yml@CICD
+      - template: jobs/setup-infrastructure.yml@CICD
         parameters:
           EnvironmentName: Test
           TerraformWorkingDirectory: '${{ variables.TerraformWorkingDirectory }}'
@@ -31,4 +40,17 @@ stages:
           AzureResourceGroupName: 'RG-ExamAzureFunctions'
           StorageAccountsName: 'testtfstorageforazfunc'
           AzureContainerName: 'testtfconstainerforazfunc'
-          AzureRmKeyTFState: 'test.azure-api-management.tfstate'
+          AzureRmKeyTFState: 'test.azure-function-infrastructure.tfstate'
+          Location: 'SouthEast Asia'
+          FuncStorageAccountName: 'teststorageazfunc'
+          AzureFunctionName: '${{ variables.AzureFunctionName }}'
+
+  - stage: deploy
+    displayName: Deploy Test
+    dependsOn: SetupInfrastructure
+    jobs:
+      - template: jobs/deploy-azure-function.yml@CICD
+        parameters:
+          EnvironmentName: Test
+          AzureSubscription: '${{ variables.AzureServiceConnection }}'
+          AzureFunctionName: '${{ variables.AzureFunctionName }}'

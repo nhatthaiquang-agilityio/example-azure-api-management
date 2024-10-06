@@ -2,19 +2,11 @@ variable "environment" {
   type = string
 }
 
-variable client_secret {
-  type = string
-}
-
-variable subscription_id {
-  type = string
-}
-
 variable "resource_group_name" {
   type = string
 }
 
-variable "az_func_name" {
+variable "azurerm_windows_function_app_name" {
   type = string
 }
 
@@ -29,4 +21,9 @@ variable "open_api_spec_content_format" {
 
 variable "open_api_spec_content_value" {
   description = "The Content from which the API Definition should be imported. When a content_format of *-link-* is specified this must be a URL, otherwise this must be defined inline."
+}
+
+variable "functionapp_storage_account_name" {
+  description = "The storage account name for azure function."
+  type = string
 }
