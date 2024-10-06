@@ -17,7 +17,7 @@ namespace ExampleAzureFunctions
         }
 
         [Function("Welcome")]
-        [OpenApiOperation(operationId: "Welcome")]
+        [OpenApiOperation(operationId: "WelcomeTrigger")]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string),
             Description = "The OK response message.")]
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
