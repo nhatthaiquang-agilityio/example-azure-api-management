@@ -31,6 +31,8 @@ stages:
   - stage: SetupInfrastructure
     displayName: Test - Setup Infrastructure
     dependsOn: build
+    variables:
+      - group: Test.ExampleAzureFunctions
     jobs:
       - template: jobs/setup-infrastructure.yml@CICD
         parameters:
